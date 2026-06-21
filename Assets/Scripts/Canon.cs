@@ -26,7 +26,7 @@ public class Canon : MonoBehaviour
     Vector3 dir;
 
     // init
-    [SerializeField]float initAngle;
+    public float initAngle;
     float initV0;
 
 
@@ -52,6 +52,7 @@ public class Canon : MonoBehaviour
         }
     
         initAngle = transform.localEulerAngles.y;
+        angle = 360 - initAngle;
         initV0 = v0;
     }
 

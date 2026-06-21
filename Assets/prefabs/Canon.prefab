@@ -1325,9 +1325,11 @@ MonoBehaviour:
   bullet: {fileID: 7636184592898705713, guid: 046282ecf96ba45cba9470b29ea95029, type: 3}
   angle: 0
   v0: 1
-  v0Test: 5
+  motion: 0
   obsParabola: {fileID: 0}
   targetParabola: {fileID: 0}
+  useBulletGravity: 1
+  initAngle: 0
 --- !u!1 &4779557057254908045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,6 +1785,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300016, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+--- !u!1 &6274057094729781912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3902304309488269042}
+  m_Layer: 0
+  m_Name: BulletFixPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3902304309488269042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6274057094729781912}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -36.700012, y: 0, z: 0.19999346}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7090332007435151449}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7269822959370892956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2288,7 @@ Transform:
   - {fileID: 4325313186369814460}
   - {fileID: 3868232734855150287}
   - {fileID: 3449792579163130522}
+  - {fileID: 3902304309488269042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!1 &8559182706552818686

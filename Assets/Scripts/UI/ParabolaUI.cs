@@ -15,6 +15,8 @@ public class SimulationUIConfig
     public float tTarget;
     public string questionText;
 
+    public bool angleInteractable;
+
 }
 
 public interface ISimulationUI
@@ -100,11 +102,17 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
         questionLabel.gameObject.SetActive(!string.IsNullOrEmpty(_currentConfig.questionText));
 
 
+
         if (config.useAngle)
         {
             cosLabel.text = $"cos({0}): {Mathf.Cos(0 * Mathf.Deg2Rad):F3}";
             sinLabel.text = $"sin({0}): {Mathf.Sin(0 * Mathf.Deg2Rad):F3}";
         }
+
+        // interacatable
+        angleSlider.interactable = _currentConfig.angleInteractable;
+        angleSlider.value = _currentConfig.canon.angle;
+
 
         t = 0;
         UpdateLabel();
@@ -145,7 +153,14 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
 
     public void OnV0Change()
     {
-        _currentConfig.canon.v0 = v0Slider.value;
+        float raw = v0Slider.value;
+        
+        float snapped = Mathf.Round(raw / 0.5f) * 0.5f;
+        
+        v0Slider.value = snapped;
+        
+        _currentConfig.canon.v0 = snapped;
+        
         UpdateLabel();
     }
 
@@ -156,10 +171,10 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
         inSimulation = true;
 
         HideAllAlerts();
-        OnStartSimulation?.Invoke();
         startTimer = true;
         tLabel.text = $"t: {t:F2}s";
         _currentConfig.canon.Shoot();
+        OnStartSimulation?.Invoke();
     }
 
     public void Update()

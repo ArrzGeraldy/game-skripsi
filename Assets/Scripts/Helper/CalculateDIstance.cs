@@ -11,6 +11,8 @@ public class CalculateDIstance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(pos1.position.z);
+        Debug.Log(pos2.position.z);
 
         if(pos1 && pos2)
         {
