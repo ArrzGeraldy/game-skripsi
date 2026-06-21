@@ -35,7 +35,9 @@ public class SimulationKinematikTrigger : MonoBehaviour
         if (!col.CompareTag("Player")) return;
 
         SnapPlayerToCenter();
+        Player.Instance.transform.rotation = Quaternion.LookRotation(transform.forward);
         Player.Instance.SwitchVCam(VCamType.VCAM_SIDEVIEW);
+        Player.Instance.SetSideViewRotation(sideViewEuler);
         Player.Instance.SetSideViewPosition(sideViewPos);
 
         inputUI.Show(uiConfig);
@@ -47,7 +49,7 @@ public class SimulationKinematikTrigger : MonoBehaviour
     {
         if (!_hasCollided) return;
         if (!col.CompareTag("Player")) return;
-
+        puzzleHandler.OnPuzzleDeactivated();
         _hasCollided = false;
     }
 

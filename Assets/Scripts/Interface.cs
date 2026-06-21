@@ -7,4 +7,5 @@ public interface PuzzleHandlerI
     public IEnumerator CorrectAnswer();
     public void OnPuzzleActivated();
     public void OnPuzzleDeactivated();
+    public void OnStartSimulation();
 }

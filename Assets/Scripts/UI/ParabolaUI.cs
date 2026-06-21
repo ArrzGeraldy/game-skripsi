@@ -58,6 +58,8 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
 
     public bool startTimer = false;
     public Action OnTimerReachedTarget;
+    public Action OnStartSimulation;
+    public bool inSimulation = false;
 
     private SimulationUIConfig _currentConfig;
 
@@ -149,8 +151,12 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
 
     public void TriggerShoot()
     {
+        if(inSimulation) return;
         t = 0;
+        inSimulation = true;
+
         HideAllAlerts();
+        OnStartSimulation?.Invoke();
         startTimer = true;
         tLabel.text = $"t: {t:F2}s";
         _currentConfig.canon.Shoot();
@@ -168,7 +174,9 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
         {
             t = _currentConfig.tTarget;
             startTimer = false;
+            inSimulation = false;
             OnTimerReachedTarget?.Invoke();
+
         }
     }
 

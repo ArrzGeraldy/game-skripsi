@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
 
             case VCamType.VCAM_SIDEVIEW:
                 lockInput = true;
-                transform.rotation = Quaternion.Euler(0, 0, 0); 
+                // transform.rotation = Quaternion.Euler(0, 0, 0); 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true; // Diperbaiki dari 'true;;'
                 currSpd = 0f;

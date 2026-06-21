@@ -102,9 +102,8 @@ public class Canon : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I))
         {
-            Vector3 obsPos = obsParabola ? obsParabola.position :  Vector3.zero;
+            Debug.Log(targetParabola.position);
             Vector3 targetPos = targetParabola ? targetParabola.position :  Vector3.zero;
-            Debug.Log("Distance to obs: " + (obsPos.z -bulletOut.position.z));
             Debug.Log("Distance to target: " + (targetPos.z -bulletOut.position.z));
         }
     }

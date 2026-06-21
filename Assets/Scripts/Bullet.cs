@@ -15,9 +15,9 @@ public class Bullet : MonoBehaviour
         
         // Tambah TrailRenderer via code
         trail = gameObject.AddComponent<TrailRenderer>();
-        trail.time = 4f;          
+        trail.time = 2f;          
         trail.startWidth = 0.15f;
-        trail.endWidth = 0.1f; 
+        trail.endWidth = 0.01f; 
         
         // Warna jejak
         trail.startColor = Color.yellow;
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator DestoryBullet()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(10.5f);
         Destroy(gameObject);
     }
 

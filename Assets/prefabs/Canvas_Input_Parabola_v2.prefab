@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7054404281846886885}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 40
+  m_MaxValue: 20
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -3255,11 +3255,11 @@ MonoBehaviour:
   angleText: {fileID: 3629579984771934409}
   v0Slider: {fileID: 3700715445147810989}
   v0Text: {fileID: 8205938468486775675}
-  tTarget: 0
   tLabel: {fileID: 6593089722497131539}
   cosLabel: {fileID: 2027310279262204359}
   sinLabel: {fileID: 5545233916171038685}
   startTimer: 0
+  inSimulation: 0
 --- !u!1 &8168902365880741820
 GameObject:
   m_ObjectHideFlags: 0

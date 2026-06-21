@@ -46,6 +46,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_Small_01
       objectReference: {fileID: 0}
+    - target: {fileID: 400752, guid: 1acd03bc537c24f3484ab4d6f07b9e02, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9583
+      objectReference: {fileID: 0}
+    - target: {fileID: 400752, guid: 1acd03bc537c24f3484ab4d6f07b9e02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400752, guid: 1acd03bc537c24f3484ab4d6f07b9e02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000067055225
+      objectReference: {fileID: 0}
     - target: {fileID: 475418, guid: 1acd03bc537c24f3484ab4d6f07b9e02, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
