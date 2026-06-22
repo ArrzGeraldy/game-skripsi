@@ -40,6 +40,8 @@ public class PuzzleKinematicFour : MonoBehaviour, PuzzleHandlerI
             string msg = "v<sub>0</sub> terlalu " + hint;
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
+            Player.Instance.LoseLife();
+
         }
     }
 

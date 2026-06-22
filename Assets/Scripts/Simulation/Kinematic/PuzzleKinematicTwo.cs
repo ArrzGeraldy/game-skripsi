@@ -17,11 +17,6 @@ public class PuzzleKinematicTwo : MonoBehaviour, PuzzleHandlerI
         SetDoorsFrozen(true);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void CheckAnswer()
     {
 
@@ -47,6 +42,7 @@ public class PuzzleKinematicTwo : MonoBehaviour, PuzzleHandlerI
             string msg = "v<sub>0</sub> terlalu " + hint;
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
+            Player.Instance.LoseLife();
         }
     }
 

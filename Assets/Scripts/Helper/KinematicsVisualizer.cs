@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum Direction
+{
+    UP, FORWARD
+}
+
 [RequireComponent(typeof(LineRenderer))]
 public class KinematicsVisualizer : MonoBehaviour
 {
     LineRenderer lr;
+
+    public Direction dir = Direction.FORWARD;
 
     [Header("Line")]
     [SerializeField] Transform bulletOut;
@@ -16,6 +23,7 @@ public class KinematicsVisualizer : MonoBehaviour
     [Header("Line Config")]
     public float startWidth = 0.05f;
     public float endWidth = 0.05f;
+
 
     public Vector3 offset = new Vector3(0,0, 0);
 
@@ -38,20 +46,29 @@ public class KinematicsVisualizer : MonoBehaviour
         // point 2
         lr.SetPosition(1, endPos);
 
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // pos
         Vector3 pos = bulletOut.position + offset;
-
         lr.SetPosition(0, pos);
 
-        Vector3 endPos = pos + (bulletOut.forward * length);
-        // point 2
+        Vector3 launchDirection = Vector3.forward; 
+
+        switch (dir)
+        {
+            case Direction.FORWARD:
+                launchDirection = bulletOut.forward; 
+                break;
+                
+            case Direction.UP:
+                launchDirection = Vector3.up; 
+                break;
+        }
+
+        Vector3 endPos = pos + (launchDirection * length);
+
         lr.SetPosition(1, endPos);
     }
 }

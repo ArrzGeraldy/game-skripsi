@@ -19,6 +19,8 @@ public class PuzzleKinematicFive : MonoBehaviour, PuzzleHandlerI
         {
             inputUI.wrongLabel.text = "SALAH";
             StartCoroutine(WrongAnswer());
+            Player.Instance.LoseLife();
+
         }
     }
 

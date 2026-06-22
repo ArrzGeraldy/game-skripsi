@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     [Header("Attributes")]
     public float maxHp = 100f;
     public float currentHp;
+    public int lifes = 5;
+    public int currentLife = 5;
 
     [Header("Movement")]
     public float normalSpd = 3f;
@@ -339,6 +341,16 @@ public class Player : MonoBehaviour
         bool anyUIActive = _activeUICount > 0;
         Cursor.lockState = anyUIActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = anyUIActive;
+    }
+
+    public void LoseLife()
+    {
+        currentLife--;
+        Debug.Log("current life: " + currentLife);
+        if(currentLife <=0)
+        {
+            Debug.Log("Game Over");
+        }
     }
 
 

@@ -14,6 +14,7 @@ public class SimulationUIConfig
     public bool useTimer;
     public float tTarget;
     public string questionText;
+    public bool useVxAndVy;
 
     public bool angleInteractable;
 
@@ -55,6 +56,15 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
     [Header("Cosinus")]
     public TextMeshProUGUI cosLabel;
     public TextMeshProUGUI sinLabel;
+
+    [Header("Parabola")]
+    public GameObject vxPanel;
+    public Slider vxSlider;
+    public TextMeshProUGUI vxText;
+    public GameObject vyPanel;
+    public Slider vySlider;
+    public TextMeshProUGUI vyText;
+        
 
     [Header("Question")]
 
@@ -100,6 +110,10 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
         veloPanel.SetActive(config.useVelo);
         cosinusPanel.SetActive(config.useAngle);
         questionLabel.gameObject.SetActive(!string.IsNullOrEmpty(_currentConfig.questionText));
+
+        // vx, vy
+        vxPanel.SetActive(config.useVxAndVy);
+        vyPanel.SetActive(config.useVxAndVy);
 
 
 
@@ -160,6 +174,36 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
         v0Slider.value = snapped;
         
         _currentConfig.canon.v0 = snapped;
+        
+        UpdateLabel();
+    }
+
+    public void OnVxChange()
+    {
+        float raw = vxSlider.value;
+        
+        float snapped = Mathf.Round(raw / 0.1f) * 0.1f;
+        
+        vxSlider.value = snapped;
+        
+        float vx = snapped;
+        float vy = vySlider.value;
+        _currentConfig.canon.v0 = Mathf.Sqrt((vx * vx) + (vy * vy));
+        
+        UpdateLabel();
+    }
+
+    public void OnVyChange()
+    {
+        float raw = vySlider.value;
+        
+        float snapped = Mathf.Round(raw / 0.1f) * 0.1f;
+        
+        vySlider.value = snapped;
+        
+        float vx = vxSlider.value;
+        float vy = snapped;
+        _currentConfig.canon.v0 = Mathf.Sqrt((vx * vx) + (vy * vy));
         
         UpdateLabel();
     }
@@ -235,5 +279,11 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
 
         if (!string.IsNullOrEmpty(_currentConfig.questionText))
             questionLabel.text = _currentConfig.questionText;
+
+        if (_currentConfig.useVelo)
+        {
+            vxText.text = "v(v<sub>0</sub>): " + vxSlider.value.ToString() + " m/s";
+            vyText.text = "v(v<sub>0</sub>): " + vySlider.value.ToString() + " m/s";
+        }
     }
 }

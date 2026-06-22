@@ -10,6 +10,7 @@ public enum ShootMotion
 public class Canon : MonoBehaviour
 {
     public Transform bulletOut;
+    public Transform fixedBulletOut;
     public GameObject bullet;
 
     public static Canon Instance;
@@ -41,7 +42,7 @@ public class Canon : MonoBehaviour
         switch(motion)
         {
             case ShootMotion.Horizontal:
-                dir = Vector3.forward;
+                dir = -Vector3.forward;
                 break;
             case ShootMotion.Vertical:
                 dir = Vector3.up;
@@ -52,7 +53,7 @@ public class Canon : MonoBehaviour
         }
     
         initAngle = transform.localEulerAngles.y;
-        angle = 360 - initAngle;
+        // angle = 360 - initAngle;
         initV0 = v0;
     }
 
@@ -80,7 +81,15 @@ public class Canon : MonoBehaviour
 
     public void Shoot()
     {
-        objBullet = Instantiate(bullet, bulletOut.position, bulletOut.rotation);
+        Vector3 spawnPosition = (fixedBulletOut != null) ? fixedBulletOut.position : bulletOut.position;
+        if(fixedBulletOut != null)
+        {
+            Debug.Log("FixOut: "+ fixedBulletOut.position );
+        }
+        Debug.Log("bulletOut: "+ bulletOut.position );
+        Debug.Log("spawnPosition: "+ spawnPosition );
+        
+        objBullet = Instantiate(bullet, spawnPosition, bulletOut.rotation);
 
         Rigidbody rb = objBullet.GetComponent<Rigidbody>();
     
@@ -101,12 +110,12 @@ public class Canon : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log(targetParabola.position);
-            Vector3 targetPos = targetParabola ? targetParabola.position :  Vector3.zero;
-            Debug.Log("Distance to target: " + (targetPos.z -bulletOut.position.z));
-        }
+        // if(Input.GetKeyDown(KeyCode.I))
+        // {
+        //     Debug.Log(targetParabola.position);
+        //     Vector3 targetPos = targetParabola ? targetParabola.position :  Vector3.zero;
+        //     Debug.Log("Distance to target: " + (targetPos.z -bulletOut.position.z));
+        // }
     }
 
 
