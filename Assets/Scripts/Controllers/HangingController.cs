@@ -45,7 +45,11 @@ public class HangingController : MonoBehaviour
                 Vector3 downOrigin = rayLedgeHit.point + Vector3.up * 0.5f;
                 Debug.DrawRay(downOrigin, Vector3.down * 0.7f, Color.red);
 
-                if (Physics.Raycast(downOrigin, Vector3.down, out rayDownHit, 0.7f, ledgeLayer))
+                // if (Physics.Raycast(downOrigin, Vector3.down, out rayDownHit, 0.7f, ledgeLayer))
+                // {
+                //     StartCoroutine(DoSwing());
+                // }
+                if (Physics.Raycast(downOrigin, Vector3.down, out rayDownHit, 0.7f, ledgeLayer) && Player.Instance.canHang)
                 {
                     StartCoroutine(DoSwing());
                 }

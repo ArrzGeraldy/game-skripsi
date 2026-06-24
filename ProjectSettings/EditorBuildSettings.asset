@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Town.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LevelMenu.unity
     guid: f87182055acfad430842371cbc93e17f
   - enabled: 0
@@ -17,9 +17,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level_2.unity
     guid: 468407228a8461978b9e63518a218548
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: 7af9cb5d351d03e188a184eda1b402ca
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 6ee86cccabb203c48926bc591a0d2f37
   - enabled: 1
     path: Assets/Scenes/Level_1_v2.unity
     guid: 644f64f4f01e8add281f62250d30d4d4

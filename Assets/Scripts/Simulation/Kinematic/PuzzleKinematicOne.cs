@@ -35,15 +35,15 @@ public class PuzzleKinematicOne : MonoBehaviour, PuzzleHandlerI
         }
         else
         {
-            Debug.Log("SALAHHH !!; DEGAN VELO: " + inputUI.v0Slider.value);
-            string hint = inputUI.v0Slider.value > targetAnswer ? "besar" : "kecil";
-            string msg = "v<sub>0</sub> terlalu " + hint;
+            float selisih = inputUI.v0Slider.value - targetAnswer;
+            string msg = FuzzyHint.GetHint(selisih,20f, "V0");
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
             Player.Instance.LoseLife();
         }
 
         GameLevelManager.Instance.UpdateUIInfo();
+        inputUI._currentConfig.canon?.DestroyBullet();
     }
 
     public IEnumerator CorrectAnswer()
@@ -79,6 +79,7 @@ public class PuzzleKinematicOne : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
+        Debug.Log("puzzle activeted: " + targetAnswer);
         inputUI.OnTimerReachedTarget += CheckAnswer;
         inputUI.OnStartSimulation += OnStartSimulation;
     }

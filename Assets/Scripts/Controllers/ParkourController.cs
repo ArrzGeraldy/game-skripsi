@@ -39,7 +39,7 @@ public class ParkourController : MonoBehaviour
 
     void Update()
     {
-        // DebugDetectObstacle();
+        DebugDetectObstacle();
         MatchTarget();
     }
 
@@ -71,8 +71,10 @@ public class ParkourController : MonoBehaviour
                 bool isNormalState = Player.Instance.state == PlayerState.Normal;
                 foreach (var action in parkourActions)
                 {
+                    bool canParkour = action.CheckIfPossible(hitData, transform) && isNormalState;
+                    Debug.Log($"can parkour: {canParkour}");
 
-                    if (action.CheckIfPossible(hitData, transform) && isNormalState)
+                    if (canParkour)
                     {
                         Debug.Log("possible: " + action.AnimName);
                         StartCoroutine(DoParkour(action));

@@ -2163,7 +2163,7 @@ PrefabInstance:
     - target: {fileID: 8283564413161831920, guid: 9181320f23a6642c0b50f8b0cf408583,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8283564413161831920, guid: 9181320f23a6642c0b50f8b0cf408583,
         type: 3}
@@ -6751,6 +6751,8 @@ MonoBehaviour:
     tTarget: 0
     questionText: "Tentukan sudut (\u03B8) dan kecepatan awal (v<sub>0</sub>) agar
       bola mencapai target <b>10 meter</b> dan melewati tembok <b>2.5 meter</b>"
+    useVxAndVy: 0
+    angleInteractable: 0
 --- !u!1 &2106302291
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,6 +7124,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1551489870856810179, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551489870856810179, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551489870856810179, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746162512833092717, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746162512833092717, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2753344981785896239, guid: 013c6bffe71987c08a185bb30b4f5235,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7238,6 +7265,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3922257896414372318, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008671157011820615, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008671157011820615, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008671157011820615, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008671157011820615, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008671157011820615, guid: 013c6bffe71987c08a185bb30b4f5235,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -7367,10 +7419,60 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7782604977521908237, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782604977521908237, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782604977521908237, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782604977521908237, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782604977521908237, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7977034095424441693, guid: 013c6bffe71987c08a185bb30b4f5235,
         type: 3}
       propertyPath: m_Name
       value: Canvas_Input_Parabola_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666562453650737345, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666562453650737345, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037864499645315060, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037864499645315060, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037864499645315060, guid: 013c6bffe71987c08a185bb30b4f5235,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9113617315925431318, guid: 013c6bffe71987c08a185bb30b4f5235,
         type: 3}

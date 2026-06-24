@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public enum VCamType
 {
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     public CinemachineVirtualCamera VCam_Sliding;
     Camera cam;
     public GameObject canvasMenuPlayer;
+
+    public bool canHang = false;
 
     
     [Header("Attributes")]
@@ -57,6 +60,8 @@ public class Player : MonoBehaviour
     public int jumpCount = 0;
     public float jumpBuffer = 0f;
     public float jumpBufferTime = 0.15f;
+    public float comboResetDuration = 1.5f;
+    public float comboResetTimer = 0;
 
     [Header("Control")]
     public bool lockMovement = false;
@@ -143,11 +148,17 @@ public class Player : MonoBehaviour
         if(jumpTimer > 0f)
             jumpTimer -= Time.deltaTime;
 
+        if(comboResetTimer > 0)
+        {
+            comboResetTimer -= Time.deltaTime;
+            if(comboResetTimer <= 0)
+                jumpCount = 0;
+        }
         if(Grounded && jumpTimer <= 0f)
         {
             state = PlayerState.Normal;
             lockMovement = false;
-            _verticalVelocity = -2f;
+                _verticalVelocity = -2f;
 
             if(Input.GetKeyDown(KeyCode.Space))
             {
@@ -155,6 +166,7 @@ public class Player : MonoBehaviour
                 {
                     state = PlayerState.Jump;
                     jumpCount++;
+                    comboResetTimer = comboResetDuration;
 
                     isJumping = true;
                     jumpTimer = jumpCooldown;
@@ -259,6 +271,32 @@ public class Player : MonoBehaviour
         velocity += force;
     }
 
+    IEnumerator Swing()
+    {
+        while(velocity.magnitude <0)
+        {
+             velocity.x = Mathf.MoveTowards(velocity.x, 0, 5f * Time.deltaTime);
+            velocity.z = Mathf.MoveTowards(velocity.z, 0, 5f * Time.deltaTime);
+            velocity.y = _verticalVelocity;
+
+            transform.position += velocity;
+            
+            yield return null;
+        }
+    }
+
+    public void ImpactSwing(float forward)
+    {
+        velocity = forward * transform.forward;
+        StartCoroutine(Swing());
+    }
+
+    public void ToggleHang(int val)
+    {
+        
+        canHang = val >= 1;
+    }
+
     public void SwitchVCam(VCamType type)
     {
         // Reset semua priority ke 0 terlebih dahulu agar kode lebih bersih
@@ -347,8 +385,10 @@ public class Player : MonoBehaviour
     {
         currentLife--;
         Debug.Log("current life: " + currentLife);
+        GameLevelManager.Instance.UpdateUIInfo();
         if(currentLife <=0)
         {
+            SceneManager.LoadScene("GameOver");
             Debug.Log("Game Over");
         }
     }

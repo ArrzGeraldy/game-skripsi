@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public float yaw;
     public float pitch;
     [Range(1.0f, 10.0f)] public float sensitivity = 5f;
+    public float playerYaw;
 
     public float fixedYPos;
 
@@ -14,6 +15,10 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
+        Debug.Log("CameraROT: " + transform.rotation);
+        transform.rotation = Quaternion.identity;
+        Debug.Log("CameraROT: " + transform.rotation);
+        yaw = -90;
     }
 
     void Update()

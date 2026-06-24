@@ -29,15 +29,16 @@ public class PuzzleKinematicFour : MonoBehaviour, PuzzleHandlerI
         if (Mathf.Approximately(inputUI.v0Slider.value, targetAnswer))
         {
             StartCoroutine(CorrectAnswer());
+            GameLevelManager.Instance.IncreasePuzzle();
+
 
             Debug.Log("BENARR !!; DEGAN VELO: " + inputUI.v0Slider.value);
             
         }
         else
         {
-            Debug.Log("SALAHHH !!; DEGAN VELO: " + inputUI.v0Slider.value);
-            string hint = inputUI.v0Slider.value > targetAnswer ? "besar" : "kecil";
-            string msg = "v<sub>0</sub> terlalu " + hint;
+            float selisih = inputUI.v0Slider.value - targetAnswer;
+            string msg = FuzzyHint.GetHint(selisih,20f, "V0");
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
             Player.Instance.LoseLife();

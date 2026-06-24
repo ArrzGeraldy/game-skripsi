@@ -14,6 +14,7 @@ public class KinematicsVisualizer : MonoBehaviour
     LineRenderer lr;
 
     public Direction dir = Direction.FORWARD;
+    public  Transform target;
 
     [Header("Line")]
     [SerializeField] Transform bulletOut;
@@ -45,6 +46,10 @@ public class KinematicsVisualizer : MonoBehaviour
         Vector3 endPos = pos + (bulletOut.forward * length);
         // point 2
         lr.SetPosition(1, endPos);
+        if(target)
+        {
+            Debug.Log(bulletOut.position - target.transform.position);
+        }
 
     }
 

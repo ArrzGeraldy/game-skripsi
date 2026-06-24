@@ -33,8 +33,10 @@ public class ParkourAction : ScriptableObject
         if(height < minHeight || height > maxHeight)
         {
             Debug.Log($"{animName} parkour not trigger because height");
+            Debug.Log($"{animName} parkour not trigger because height");
             return false;
         }
+       
 
 
         if(!string.IsNullOrEmpty(requiredTag))

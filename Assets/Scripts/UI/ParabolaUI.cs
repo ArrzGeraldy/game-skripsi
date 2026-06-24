@@ -73,7 +73,7 @@ public class ParabolaUI : MonoBehaviour, ISimulationUI
     public Action OnStartSimulation;
     public bool inSimulation = false;
 
-    private SimulationUIConfig _currentConfig;
+    public SimulationUIConfig _currentConfig;
 
     void Awake()
     {

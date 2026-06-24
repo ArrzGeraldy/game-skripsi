@@ -17,10 +17,17 @@ public class PuzzleKinematicSix : MonoBehaviour, PuzzleHandlerI
         if(Mathf.Approximately(targetAnswerv0, inputUI.v0Slider.value) && Mathf.Approximately(targetAnswerAngle, inputUI.angleSlider.value))
         {
             StartCoroutine(CorrectAnswer());
+            GameLevelManager.Instance.IncreasePuzzle();
+
         }
         else
         {
-            inputUI.wrongLabel.text = "SALAH";
+            float deltaV0 = inputUI.v0Slider.value - targetAnswerv0;
+            float deltaAngle = inputUI.angleSlider.value - targetAnswerAngle;
+            // Panggil otomatis mendeteksi overload 2 parameter
+            string msg = FuzzyHint.GetHint(deltaV0,20f, "V0");
+            string msg2 = FuzzyHint.GetHint(deltaAngle, 60f, "Sudut");
+            inputUI.wrongLabel.text = msg + "\n" + msg2;
             StartCoroutine(WrongAnswer());
             Player.Instance.LoseLife();
 
@@ -32,7 +39,7 @@ public class PuzzleKinematicSix : MonoBehaviour, PuzzleHandlerI
         // wall.DORotate(new Vector3(90, 0, 0), 2);
         wall.DOScale(new Vector3(0, 0, 0), 2);
         inputUI.ShowAlert(AlertType.Success, true);
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(3f);
         Player.Instance.SwitchVCam(VCamType.VCAM_3PERSON);
         inputUI.Hide();
         

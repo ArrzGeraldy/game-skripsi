@@ -20,15 +20,21 @@ public class PuzzleKinematicTwo : MonoBehaviour, PuzzleHandlerI
     public void CheckAnswer()
     {
 
-        pointLight.color = Color.green;
+        pointLight.color = Color.blue;
+
         // StartCoroutine(dangerLight());
-        SetDoorsFrozen(false);
+        
 
         if (Mathf.Approximately(inputUI.v0Slider.value, targetAnswer))
         {
             pointLight.color = Color.green;
+            SetDoorsFrozen(false);
+
+            pointLight.color = Color.green;
             DoorsAddForce();
             StartCoroutine(CorrectAnswer());
+            GameLevelManager.Instance.IncreasePuzzle();
+
 
 
             Debug.Log("BENARR !!; DEGAN VELO: " + inputUI.v0Slider.value);
@@ -36,10 +42,9 @@ public class PuzzleKinematicTwo : MonoBehaviour, PuzzleHandlerI
         }
         else
         {
-            pointLight.color = Color.red;
-            Debug.Log("SALAHHH !!; DEGAN VELO: " + inputUI.v0Slider.value);
-            string hint = inputUI.v0Slider.value > targetAnswer ? "besar" : "kecil";
-            string msg = "v<sub>0</sub> terlalu " + hint;
+            // pointLight.color = Color.red;
+            float selisih = inputUI.v0Slider.value - targetAnswer;
+            string msg = FuzzyHint.GetHint(selisih,20f, "V0");
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
             Player.Instance.LoseLife();
@@ -80,8 +85,19 @@ public class PuzzleKinematicTwo : MonoBehaviour, PuzzleHandlerI
 
     public void OnStartSimulation()
     {
-        pointLight.color = Color.blue;
+        pointLight.color = Color.red;
+        // StartCoroutine(ChangeColor());
         SetDoorsFrozen(true);
+    }
+    IEnumerator ChangeColor()
+    {
+        while(inputUI.inSimulation)
+        {
+
+            pointLight.color = Color.Lerp(Color.red, Color.blue,inputUI.CurrTime);
+            yield return null;
+        }
+        
     }
 
     IEnumerator dangerLight()
