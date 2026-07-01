@@ -3476,7 +3476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7058824}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.95686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4455,6 +4455,15 @@ MonoBehaviour:
   vyText: {fileID: 6159742225210100327}
   startTimer: 0
   inSimulation: 0
+  _currentConfig:
+    canon: {fileID: 0}
+    useVelo: 0
+    useAngle: 0
+    useTimer: 0
+    tTarget: 0
+    questionText: 
+    useVxAndVy: 0
+    angleInteractable: 0
 --- !u!1 &8162629410347796559
 GameObject:
   m_ObjectHideFlags: 0

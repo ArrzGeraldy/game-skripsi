@@ -32,7 +32,7 @@ public class PuzzleKinematicSeven : MonoBehaviour, PuzzleHandlerI
             string msg2 = FuzzyHint.GetHint(deltaAngle, 60f, "Sudut");
             inputUI.wrongLabel.text = msg + "\n" + msg2;
             StartCoroutine(WrongAnswer());
-            Player.Instance.LoseLife();
+            Player.Instance.LoseLife("puzzle 7");
 
         }
     }
@@ -42,7 +42,7 @@ public class PuzzleKinematicSeven : MonoBehaviour, PuzzleHandlerI
     {
         sphere.DOScale(0,3f).SetEase(ease);
         inputUI.ShowAlert(AlertType.Success, true);
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(5.5f);
         GameLevelManager.Instance.IncreasePuzzle();
 
         Player.Instance.SwitchVCam(VCamType.VCAM_3PERSON);
@@ -52,11 +52,15 @@ public class PuzzleKinematicSeven : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
+        Debug.Log("activate puzzle 7");
+
         inputUI.OnTimerReachedTarget += CheckAnswer;
     }
 
     public void OnPuzzleDeactivated()
     {
+        Debug.Log("activate puzzle 7");
+
         inputUI.OnTimerReachedTarget -= CheckAnswer;
     }
 

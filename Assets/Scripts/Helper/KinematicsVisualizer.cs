@@ -75,5 +75,9 @@ public class KinematicsVisualizer : MonoBehaviour
         Vector3 endPos = pos + (launchDirection * length);
 
         lr.SetPosition(1, endPos);
+        // if(target)
+        // {
+        //     Debug.Log(bulletOut.position - target.transform.position);
+        // }
     }
 }

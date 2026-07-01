@@ -19,6 +19,7 @@ public class Canon : MonoBehaviour
     GameObject objBullet;
     
     public ShootMotion motion;
+    public int multipleDir = -1;
 
 
     public Transform obsParabola;
@@ -42,7 +43,7 @@ public class Canon : MonoBehaviour
         switch(motion)
         {
             case ShootMotion.Horizontal:
-                dir = -Vector3.forward;
+                dir = Vector3.forward * multipleDir;
                 break;
             case ShootMotion.Vertical:
                 dir = Vector3.up;
@@ -98,6 +99,19 @@ public class Canon : MonoBehaviour
             dir = bulletOut.forward;
         rb.velocity = dir * v0;
 
+    }
+
+    public void SetBulletGravity(bool val)
+    {
+        Rigidbody rb = objBullet.GetComponent<Rigidbody>();
+        if(rb)
+            rb.useGravity = val;
+    }
+
+    public void BulletForce(float force = 5)
+    {
+        Rigidbody rb = objBullet.GetComponent<Rigidbody>();
+        rb.AddForce(Vector3.forward * force, ForceMode.Impulse);
     }
 
     public void DestroyBullet()

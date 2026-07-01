@@ -13,6 +13,7 @@ public class ColliderEnter : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
+        Debug.Log("collider enter: " + col.tag);
         if(col.CompareTag("Player") && !hasCollided)
         {
             Debug.Log("Player Enter");

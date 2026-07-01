@@ -49,7 +49,7 @@ public class HangingController : MonoBehaviour
                 // {
                 //     StartCoroutine(DoSwing());
                 // }
-                if (Physics.Raycast(downOrigin, Vector3.down, out rayDownHit, 0.7f, ledgeLayer) && Player.Instance.canHang)
+                if (Physics.Raycast(downOrigin, Vector3.down, out rayDownHit, 0.7f, ledgeLayer) )
                 {
                     StartCoroutine(DoSwing());
                 }

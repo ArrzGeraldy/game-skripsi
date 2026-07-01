@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     Camera cam;
     public GameObject canvasMenuPlayer;
 
-    public bool canHang = false;
+    // public bool canHang = false;
 
     
     [Header("Attributes")]
@@ -106,25 +106,24 @@ public class Player : MonoBehaviour
         }
 
 
-        // if(Input.GetKeyDown(KeyCode.Escape))
-        // {
-        //     // anim.SetFloat("speed", 0);
-        //     lockInput = true;
-        //     RegisterUI();
-        //     Time.timeScale = 0f;
-        //     canvasMenuPlayer.SetActive(true);
-        // //     Application.Quit();
-        // // #if UNITY_EDITOR
-        // //     UnityEditor.EditorApplication.isPlaying = false;
-        // // #endif
-        // }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            // anim.SetFloat("speed", 0);
+            lockInput = true;
+            RegisterUI();
+            Time.timeScale = 0f;
+            canvasMenuPlayer.SetActive(true);
+        //     Application.Quit();
+        // #if UNITY_EDITOR
+        //     UnityEditor.EditorApplication.isPlaying = false;
+        // #endif
+        }
    
-
-        GroundCheck();
         if(!hasControl) return;
+        JumpAndGravity();
+        GroundCheck();
         
         if(lockInput) return;
-        JumpAndGravity();
 
         Move();
 
@@ -154,8 +153,10 @@ public class Player : MonoBehaviour
             if(comboResetTimer <= 0)
                 jumpCount = 0;
         }
+
         if(Grounded && jumpTimer <= 0f)
         {
+            isJumping = false;
             state = PlayerState.Normal;
             lockMovement = false;
                 _verticalVelocity = -2f;
@@ -285,17 +286,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ImpactSwing(float forward)
-    {
-        velocity = forward * transform.forward;
-        StartCoroutine(Swing());
-    }
+    // public void ImpactSwing(float forward)
+    // {
+    //     velocity = forward * transform.forward;
+    //     StartCoroutine(Swing());
+    // }
 
-    public void ToggleHang(int val)
-    {
+    // public void ToggleHang(int val)
+    // {
         
-        canHang = val >= 1;
-    }
+    //     canHang = val >= 1;
+    // }
 
     public void SwitchVCam(VCamType type)
     {
@@ -381,10 +382,10 @@ public class Player : MonoBehaviour
         Cursor.visible = anyUIActive;
     }
 
-    public void LoseLife()
+    public void LoseLife(string puzzle = "Unknown")
     {
         currentLife--;
-        Debug.Log("current life: " + currentLife);
+        Debug.Log("current life: " + currentLife + "Lost in: " + puzzle);
         GameLevelManager.Instance.UpdateUIInfo();
         if(currentLife <=0)
         {

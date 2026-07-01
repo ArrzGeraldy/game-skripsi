@@ -15,10 +15,16 @@ public class GameLevelManager : MonoBehaviour
     [Header("Refrences")]
     public TextMeshProUGUI labelLife;
     public TextMeshProUGUI labelPuzzle;
+    public GameObject room8;
+
+    int levelId;
 
     void Awake()
     {
+        levelId = PlayerPrefs.GetInt("current_level_id", -1);
+        Debug.Log("LEVEL ID: "+levelId);
         Instance = this;
+        DB.Init();
     }
 
     void Start()
@@ -77,5 +83,28 @@ public class GameLevelManager : MonoBehaviour
     {
         labelLife.text = $"x{Player.Instance.currentLife}";
         labelPuzzle.text = $"{currentPuzzle}/{maxPuzzle}";
+    }
+
+    public void ActivateRoom(int val)
+    {
+        Debug.Log("activate val: " + val);
+        if(val == 8)
+        {
+            room8.SetActive(true);
+        }
+    }
+
+    public void ExitLevel()
+    {
+        float numerator = currentPuzzle * Player.Instance.currentLife;
+        float denominator = maxPuzzle * Player.Instance.lifes;
+
+        float score = numerator / denominator;
+
+        int finalScore = Mathf.RoundToInt(score * 100f);
+
+        Debug.Log("Score: " + finalScore);
+
+        LevelProgress.UpdateScore(levelId, finalScore);
     }
 }

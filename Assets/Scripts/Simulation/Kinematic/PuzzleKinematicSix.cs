@@ -29,7 +29,7 @@ public class PuzzleKinematicSix : MonoBehaviour, PuzzleHandlerI
             string msg2 = FuzzyHint.GetHint(deltaAngle, 60f, "Sudut");
             inputUI.wrongLabel.text = msg + "\n" + msg2;
             StartCoroutine(WrongAnswer());
-            Player.Instance.LoseLife();
+            Player.Instance.LoseLife("puzzle 6");
 
         }
     }
@@ -47,11 +47,15 @@ public class PuzzleKinematicSix : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
+        Debug.Log("activate puzzle 6");
+
         inputUI.OnTimerReachedTarget += CheckAnswer;
     }
 
     public void OnPuzzleDeactivated()
     {
+        Debug.Log("activate puzzle 6");
+
         inputUI.OnTimerReachedTarget -= CheckAnswer;
     }
 

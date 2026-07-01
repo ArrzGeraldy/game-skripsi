@@ -41,7 +41,7 @@ public class PuzzleKinematicFour : MonoBehaviour, PuzzleHandlerI
             string msg = FuzzyHint.GetHint(selisih,20f, "V0");
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
-            Player.Instance.LoseLife();
+            Player.Instance.LoseLife("puzzle 4");
 
         }
     }
@@ -66,6 +66,7 @@ public class PuzzleKinematicFour : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
+        Debug.Log("activate puzzle 4");
         wallSide.SetActive(false);
         inputUI.OnStartSimulation += OnStartSimulation;
         inputUI.OnTimerReachedTarget += CheckAnswer;
@@ -73,9 +74,11 @@ public class PuzzleKinematicFour : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleDeactivated()
     {
+        Debug.Log("activate puzzle 4");
+
         wallSide.SetActive(true);
         inputUI.OnStartSimulation -= OnStartSimulation;
-        inputUI.OnTimerReachedTarget += CheckAnswer;
+        inputUI.OnTimerReachedTarget -= CheckAnswer;
 
     }
 

@@ -73,6 +73,9 @@ public class SimulationKinematikTrigger : MonoBehaviour
             errMsg = "CANVAS INPUT NULL";
         }
         if(!centerPoint) errMsg = "CENTER POINT NULL";
-        Debug.Log(errMsg);
+        if(!string.IsNullOrEmpty(errMsg))
+        {
+            Debug.Log(errMsg);
+        }
     }
 }

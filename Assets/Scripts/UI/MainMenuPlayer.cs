@@ -23,6 +23,7 @@ public class MainMenuPlayer : MonoBehaviour
     public void ExitLevel()
     {
         Time.timeScale = 1f; 
+        GameLevelManager.Instance.ExitLevel();
         SceneManager.LoadScene("LevelMenu");
 
         // Application.Quit();

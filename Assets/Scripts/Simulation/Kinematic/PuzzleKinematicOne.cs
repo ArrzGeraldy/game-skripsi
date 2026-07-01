@@ -39,7 +39,7 @@ public class PuzzleKinematicOne : MonoBehaviour, PuzzleHandlerI
             string msg = FuzzyHint.GetHint(selisih,20f, "V0");
             inputUI.wrongLabel.text = msg;
             StartCoroutine(WrongAnswer());
-            Player.Instance.LoseLife();
+            Player.Instance.LoseLife("puzzle 1");
         }
 
         GameLevelManager.Instance.UpdateUIInfo();
@@ -79,13 +79,16 @@ public class PuzzleKinematicOne : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
-        Debug.Log("puzzle activeted: " + targetAnswer);
+        Debug.Log("activate puzzle 1");
+
         inputUI.OnTimerReachedTarget += CheckAnswer;
         inputUI.OnStartSimulation += OnStartSimulation;
     }
 
     public void OnPuzzleDeactivated()
     {
+        Debug.Log("activate puzzle 1");
+
         inputUI.OnTimerReachedTarget -= CheckAnswer;
         inputUI.OnStartSimulation -= OnStartSimulation;
     }

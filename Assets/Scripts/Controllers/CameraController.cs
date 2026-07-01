@@ -15,9 +15,7 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
-        Debug.Log("CameraROT: " + transform.rotation);
         transform.rotation = Quaternion.identity;
-        Debug.Log("CameraROT: " + transform.rotation);
         yaw = -90;
     }
 

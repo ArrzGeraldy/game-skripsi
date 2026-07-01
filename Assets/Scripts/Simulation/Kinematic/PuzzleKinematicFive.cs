@@ -12,7 +12,7 @@ public class PuzzleKinematicFive : MonoBehaviour, PuzzleHandlerI
 
     public void CheckAnswer()
     {
-        if(Mathf.Approximately(targetAnswerv0, inputUI.v0Slider.value))
+        if(Mathf.Approximately(targetAnswerv0, inputUI.v0Slider.value) && Mathf.Approximately(targetAnswerAngle, inputUI.angleSlider.value))
         {
             StartCoroutine(CorrectAnswer());
             GameLevelManager.Instance.IncreasePuzzle();
@@ -26,7 +26,7 @@ public class PuzzleKinematicFive : MonoBehaviour, PuzzleHandlerI
             string msg2 = FuzzyHint.GetHint(deltaAngle, 60f, "Sudut");
             inputUI.wrongLabel.text = msg + "\n" + msg2;
             StartCoroutine(WrongAnswer());
-            Player.Instance.LoseLife();
+            Player.Instance.LoseLife("puzzle 5");
 
         }
     }
@@ -43,11 +43,15 @@ public class PuzzleKinematicFive : MonoBehaviour, PuzzleHandlerI
 
     public void OnPuzzleActivated()
     {
+        Debug.Log("activate puzzle 5");
+
         inputUI.OnTimerReachedTarget += CheckAnswer;
     }
 
     public void OnPuzzleDeactivated()
     {
+        Debug.Log("activate puzzle 5");
+
         inputUI.OnTimerReachedTarget -= CheckAnswer;
     }
 
